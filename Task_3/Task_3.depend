@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1652890545 source:e:\projects\master micro tasks\task_3\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+
