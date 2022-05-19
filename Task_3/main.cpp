@@ -70,7 +70,7 @@ do{
 
 
     try{
-        if(n == 0 || m == 0 || p == 0)
+        if(n <= 0 || m <= 0 || p <= 0)
             throw exception();
 
     vector<vector<vector<int>>> vector_3D(n,vector<vector<int>>(m,vector<int>(p)));
