@@ -121,7 +121,7 @@ public class TopologyFunctions {
 
     public static ArrayList<component> queryDevicesWithNetlistNode(String id , HashMap<String,String> netlist) {
 
-        ArrayList<component> result = null;
+        ArrayList<component> result = new ArrayList<>();
         Topology tempTopology = singleton_db.getInstance().search_Topology(id);
 
         if(tempTopology == null){
@@ -130,8 +130,9 @@ public class TopologyFunctions {
         }
 
         for(component comp : tempTopology.getDevices()){
-            if(comp.getNetlist() == netlist)
+            if(comp.getNetlist().equals(netlist) ) {
                 result.add(comp);
+            }
         }
         return result;
     }

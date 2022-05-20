@@ -10,14 +10,25 @@ public class Main {
 	// write your code here
     try {
         Singleton_DB singleton_db = Singleton_DB.getInstance();
-         //TopologyFunctions.readJson("E:\\Projects\\Master_Micro_Tasks\\Task_2\\src\\Topology.json");
-         // TopologyFunctions.writeJson("top1","E:\\Projects\\Master_Micro_Tasks\\Task_2\\src\\writetest.json");
-         //TopologyFunctions.deleteTopology("top1");
+        TopologyFunctions.readJson("E:\\Projects\\Master_Micro_Tasks\\Task_2\\src\\Topology.json");
+        //TopologyFunctions.writeJson("top1","E:\\Projects\\Master_Micro_Tasks\\Task_2\\src\\writetest.json");
+        //TopologyFunctions.deleteTopology("top1");
 
-        ArrayList<component> res = TopologyFunctions.queryDevices("top1");
-        for (component c : res)
-            System.out.println(c.getId());
-
+        HashMap<String, String> netlist = new HashMap<>();
+        netlist.put("t1", "vdd");
+        netlist.put("t2", "n1");
+        netlist.put("t3", "n2");
+        ArrayList<component> comp = TopologyFunctions.queryDevicesWithNetlistNode("top1" , netlist);
+        /*
+         find the devices with netlist:{
+         "t1" : "vdd",
+         "t2" :"n1",
+         "t3" : "n2"
+         }
+        */
+        for(component component : comp)
+            System.out.println(component.getId());
+        // The Array of the devices will be null as there is not netlist in any component with these values..
     }catch (Exception e){
     }
 
