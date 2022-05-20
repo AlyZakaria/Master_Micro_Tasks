@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="apache.xbean.reflect" type="repository">
+    <properties maven-id="org.apache.xbean:xbean-reflect:3.4" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/xbean/xbean-reflect/3.4/xbean-reflect-3.4.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/log4j/log4j/1.2.12/log4j-1.2.12.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/commons-logging/commons-logging-api/1.1/commons-logging-api-1.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
