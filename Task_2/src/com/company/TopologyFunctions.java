@@ -100,6 +100,7 @@ public class TopologyFunctions {
     public static ArrayList<Topology> queryTopologies(){
         return singleton_db.getInstance().topologyArrayList;
     }
+
     public static void deleteTopology(String TopologyID){
         Topology tempTopology = singleton_db.getInstance().search_Topology(TopologyID);
             if(tempTopology != null)

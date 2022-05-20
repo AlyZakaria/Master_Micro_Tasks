@@ -10,8 +10,8 @@ public class Main {
 	// write your code here
     try {
         Singleton_DB singleton_db = Singleton_DB.getInstance();
-        //TopologyFunctions.readJson("E:\\Projects\\Master_Micro_Tasks\\Task_2\\src\\Topology.json");
-        // TopologyFunctions.writeJson("top1","E:\\Projects\\Master_Micro_Tasks\\Task_2\\src\\writetest.json");
+         //TopologyFunctions.readJson("E:\\Projects\\Master_Micro_Tasks\\Task_2\\src\\Topology.json");
+         // TopologyFunctions.writeJson("top1","E:\\Projects\\Master_Micro_Tasks\\Task_2\\src\\writetest.json");
          //TopologyFunctions.deleteTopology("top1");
 
         ArrayList<component> res = TopologyFunctions.queryDevices("top1");
@@ -24,13 +24,6 @@ public class Main {
 
 
 
-//    range Range = new range("resistor", 100 , 10 , 800);
-//    HashMap<String,String> hashMap = new HashMap<>();
-//    hashMap.put("t1" , "test");
-//    hashMap.put("t2" , "test2");
-//    component co = new component("resistor" , "res1" , hashMap, Range);
-//    arr.add(co);
-//    Topology topology = new Topology("Top2", arr);
-//    //TopologyFunctions.write(topology,"E:\\Projects\\Master_Micro_Tasks\\Task_2\\src\\writetest.json");
+
     }
 }

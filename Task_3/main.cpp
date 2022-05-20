@@ -58,22 +58,40 @@ void display_vector3D(vector<vector<vector<int>>> vector_3D){
 
 }
 
+bool checknumbers(string n){
+    for(auto i : n)
+        if(!isdigit(i))
+            return false;
+return true;
+}
+
 
 int main()
 {
-    int n , m , p;
+    string x , y , z;
     bool flag = false;
 
 do{
-    cout << "Enter the size of matrix: " << endl;
-    cin >> n >> m >> p;
-
 
     try{
+        cout << "Enter the size of matrix: " << endl;
+        cin >> x >> y >> z;
+
+
+        if(!checknumbers(x) || !checknumbers(y) || !checknumbers(z))
+            throw exception();
+
+
+        int n = stoi(x);
+        int m = stoi(y);
+        int p = stoi(z);
+
         if(n <= 0 || m <= 0 || p <= 0)
             throw exception();
 
+
     vector<vector<vector<int>>> vector_3D(n,vector<vector<int>>(m,vector<int>(p)));
+
     vector<int> vector_1D(n*m*p);
     int c = 0;
     cout << endl;
