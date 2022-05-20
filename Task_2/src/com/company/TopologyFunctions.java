@@ -21,6 +21,8 @@ import org.json.JSONObject;
 
 public class TopologyFunctions {
 
+    static Singleton_DB singleton_db = Singleton_DB.getInstance();
+
     static Topology readJson(String jsonpath ) throws IOException  {
 
         String json = Files.readString(Path.of(jsonpath));
@@ -34,7 +36,7 @@ public class TopologyFunctions {
             devices.add(get_the_component(i.toString()));
 
         Topology t = new Topology(id,devices);
-        DataBase_Memory.topologyArrayList.add(t);
+        singleton_db.getInstance().topologyArrayList.add(t);
 
     return t;
     }
@@ -50,14 +52,13 @@ public class TopologyFunctions {
         writer.close();
     }
     static void writeJson(String topologyId , String filepath) throws IOException {
-        for (Topology t : DataBase_Memory.topologyArrayList){
+        for (Topology t : singleton_db.getInstance().topologyArrayList){
             if (t.getId().equals(topologyId)) {
                 write(t, filepath);
                 return;
             }
         }
-        System.out.println("There is no id with this topology");
-
+        System.out.println("NO ID FOUND");
     }
 
     private static component get_the_component(String i) {
@@ -97,33 +98,33 @@ public class TopologyFunctions {
 
 
     public static ArrayList<Topology> queryTopologies(){
-        return DataBase_Memory.topologyArrayList;
+        return singleton_db.getInstance().topologyArrayList;
     }
     public static void deleteTopology(String TopologyID){
-        Topology tempTopology = search_Topology(TopologyID);
+        Topology tempTopology = singleton_db.getInstance().search_Topology(TopologyID);
             if(tempTopology != null)
-                DataBase_Memory.topologyArrayList.remove(tempTopology);
+                singleton_db.getInstance().topologyArrayList.remove(tempTopology);
             else
-                System.out.println("There is no id with this topology");
+                System.out.println("NO ID FOUND");
     }
 
-    public static ArrayList<component> queryDevices(String ID){
+    public static ArrayList<component> queryDevices(String ID) throws exceptionError{
 
-        Topology tempTopology = search_Topology(ID);
+        Topology tempTopology = singleton_db.getInstance().search_Topology(ID);
         if(tempTopology != null)
             return tempTopology.getDevices();
         else
-            System.out.println("There is no id with this topology");
-    return null;
+            System.out.println("NO ID FOUND");
+        return null;
     }
 
     public static ArrayList<component> queryDevicesWithNetlistNode(String id , HashMap<String,String> netlist) {
 
         ArrayList<component> result = null;
-        Topology tempTopology = search_Topology(id);
+        Topology tempTopology = singleton_db.getInstance().search_Topology(id);
 
         if(tempTopology == null){
-            System.out.println("There is no id with this topology");
+            System.out.println("NO ID FOUND");
             return null;
         }
 
@@ -134,12 +135,5 @@ public class TopologyFunctions {
         return result;
     }
 
-    public static Topology search_Topology(String id){
-        for(Topology t : DataBase_Memory.topologyArrayList){
-            if(t.getId().equals(id)){
-                return t;
-            }
-        }
-    return null;
-    }
+
 }
